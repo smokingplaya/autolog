@@ -1,0 +1,2 @@
+# autolog
+Convenient logging
