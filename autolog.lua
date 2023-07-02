@@ -25,11 +25,7 @@ for _, v in ipairs(autolog.logged_functions) do
 	_G[v] = function(...)
 		local args = {} -- args processing
 		for _, v in ipairs({...}) do
-			if isstring(v)  then
-				args[#args+1] = v
-			else
-				args[#args+1] = tostring(v) or v.__tostring and v:__tostring() or type(v) or "weird argument"
-			end
+			args[#args+1] = isstring(v) and v or tostring(v)
 		end
 
 		log_to_file(v, table.concat(args, "          "))
